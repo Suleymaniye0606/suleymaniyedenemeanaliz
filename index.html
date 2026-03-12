@@ -40,9 +40,15 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
         import { getFirestore, collection, addDoc, updateDoc, doc, onSnapshot, setDoc, getDoc, query, where, deleteDoc, writeBatch } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        // ==========================================
-        // ⚠️ FIREBASE AYARLARI BURAYA GELECEK ⚠️
-        // ==========================================
+        const firebaseConfig = {
+  apiKey: "AIzaSyCkegxqZDWZTwzIo1n8QxzHt0ghvc5USDg",
+  authDomain: "suleymaniye-panel.firebaseapp.com",
+  projectId: "suleymaniye-panel",
+  storageBucket: "suleymaniye-panel.firebasestorage.app",
+  messagingSenderId: "852997265109",
+  appId: "1:852997265109:web:035dfeb424ce59c980745c",
+  measurementId: "G-SKSYN6BLT8"
+};
         const firebaseConfig = {
             apiKey: "KENDİ_API_KEYİNİZİ_BURAYA_YAZACAKSINIZ",
             authDomain: "projeniz.firebaseapp.com",
