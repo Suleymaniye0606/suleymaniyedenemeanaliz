@@ -40,7 +40,7 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
         import { getFirestore, collection, addDoc, updateDoc, doc, onSnapshot, setDoc, getDoc, query, where, deleteDoc, writeBatch } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        const firebaseConfig = {
+       const firebaseConfig = {
   apiKey: "AIzaSyCkegxqZDWZTwzIo1n8QxzHt0ghvc5USDg",
   authDomain: "suleymaniye-panel.firebaseapp.com",
   projectId: "suleymaniye-panel",
@@ -48,14 +48,14 @@
   messagingSenderId: "852997265109",
   appId: "1:852997265109:web:035dfeb424ce59c980745c",
   measurementId: "G-SKSYN6BLT8"
-};
         const firebaseConfig = {
-            apiKey: "KENDİ_API_KEYİNİZİ_BURAYA_YAZACAKSINIZ",
-            authDomain: "projeniz.firebaseapp.com",
-            projectId: "projenizin-id-si",
-            storageBucket: "projeniz.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456:web:abcd"
+          apiKey: "AIzaSyCkegxqZDWZTwzIo1n8QxzHt0ghvc5USDg",
+          authDomain: "suleymaniye-panel.firebaseapp.com",
+          projectId: "suleymaniye-panel",
+          storageBucket: "suleymaniye-panel.firebasestorage.app",
+          messagingSenderId: "852997265109",
+          appId: "1:852997265109:web:035dfeb424ce59c980745c",
+          measurementId: "G-SKSYN6BLT8"
         };
         
         // Şimdilik sistemin GitHub üzerinde boş da olsa çalışabilmesi için sahte(test) config (Bunu Firebase kurunca sileceksiniz)
@@ -234,7 +234,7 @@
         function App() {
           const [view, setView] = useState('login'); 
           const [currentUser, setCurrentUser] = useState(null); 
-          const [campuses, setCampuses] = useState([]); 
+          const [campuses, setCampuses] = useState(INITIAL_CAMPUSES); // EKRAN BOŞ KALMASIN DİYE BAŞLANGIÇTA VARSAYILAN KAMPÜSLERİ YÜKLER
           const [examResults, setExamResults] = useState([]); 
           const [branchResults, setBranchResults] = useState([]);
           const [achievementResults, setAchievementResults] = useState([]);
@@ -308,7 +308,10 @@
               } catch (err) { console.error("Auth Error:", err); setIsLoading(false); }
             };
             initAuth();
-            const unsubscribe = onAuthStateChanged(auth, (user) => { if (user) setFirebaseUser(user); });
+            const unsubscribe = onAuthStateChanged(auth, (user) => { 
+                if (user) { setFirebaseUser(user); } 
+                else { setIsLoading(false); } 
+            });
             return () => unsubscribe();
           }, []);
 
